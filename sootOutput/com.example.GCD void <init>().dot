@@ -1,0 +1,10 @@
+digraph "void <init>()" {
+    label="void <init>()";
+    page="8.5, 11.0";
+    node [shape=circle];
+    "0" [style=filled,fillcolor=gray,];
+    "1";
+    "0"->"1";
+    "2" [style=filled,fillcolor=lightgray,];
+    "1"->"2";
+}
