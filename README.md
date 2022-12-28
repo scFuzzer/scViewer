@@ -13,6 +13,7 @@ A control flow graph & call graph builder for java smart contracts.
 
 我们已经将打包好的jar包放在根目录，若希望重新编译打包，可使用以下代码。
 ```
+git@github.com:scFuzzer/scViewer.git
 cd soot
 mvn package assembly:single
 cp target/sootclasses-trunk-jar-with-dependencies.jar ./..
