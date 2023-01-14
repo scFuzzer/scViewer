@@ -9,15 +9,33 @@ A control flow graph & call graph builder for java smart contracts.
 
 目前本项目基于Soot进行开发，将两个功能分别以两个模块实现，并打包成jar包，方便直接使用。
 
+## 环境配置
+
+需要配置如下环境
+```
+sudo apt install openjdk-11-jdk
+sudo apt install graphviz
+cp ./dependencies/rt.jar /usr/lib/jvm/java-11-openjdk-amd64/lib/
+```
+
 ## Build from the source (optional)
 
 我们已经将打包好的jar包放在根目录，若希望重新编译打包，可使用以下代码。
 ```
-git@github.com:scFuzzer/scViewer.git
 cd soot
 mvn package assembly:single
 cp target/sootclasses-trunk-jar-with-dependencies.jar ./..
 ```
+
+## Build from docker (optional)
+
+我们已经将打包好的docker镜像放在根目录并配置好环境，可以直接导入镜像使用。
+```
+docker import - scviewer < scViewer.tar
+cd root/scViewer
+```
+
+# Usage
 
 ## Usage: CallGraphBuilder
 
