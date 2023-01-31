@@ -57,6 +57,7 @@ public class CallGraphBuilder extends SceneTransformer {
         //start working
 	    PackManager.v().runPacks();
 	}
+
 	private static void excludeJDKLibrary()
 	{
 	    Options.v().set_exclude(excludeList());
@@ -111,12 +112,18 @@ public class CallGraphBuilder extends SceneTransformer {
 
 		HashSet<String> nodes = new HashSet<String>();
 		for(SootClass sc : Scene.v().getApplicationClasses()){
+			if(Scene.v().isExcluded(sc)){
+				continue;
+			}
 			for(SootMethod sm : sc.getMethods()){
 				nodes.add(sm.getSignature());
 				Iterator<MethodOrMethodContext> targets = new Targets(
 					callGraph.edgesOutOf(sm));
 				while (targets.hasNext()) {
 					SootMethod tgn = (SootMethod) targets.next();
+					if(Scene.v().isExcluded(tgn.getDeclaringClass())){
+						continue;
+					}
 					nodes.add(tgn.getSignature());
 
 				}
@@ -126,14 +133,15 @@ public class CallGraphBuilder extends SceneTransformer {
 			canvas.drawNode(node);
 		}
 
-		int numOfEdges =0;
 		for(SootClass sc : Scene.v().getApplicationClasses()){
 			for(SootMethod sm : sc.getMethods()){
 				Iterator<MethodOrMethodContext> targets = new Targets(
 					callGraph.edgesOutOf(sm));
 				while (targets.hasNext()) {
-					numOfEdges++;
 					SootMethod tgn = (SootMethod) targets.next();
+					if(Scene.v().isExcluded(tgn.getDeclaringClass())){
+						continue;
+					}
 					canvas.drawEdge(sm.getSignature(), tgn.getSignature());
 				}
 			}

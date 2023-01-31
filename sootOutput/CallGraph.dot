@@ -1,25 +1,17 @@
 digraph "CallGraph" {
     label="CallGraph";
-    "<java.lang.Object: void <init>()>";
-    "<com.example.Animal: void saySomething()>";
-    "<java.lang.Object: void <clinit>()>";
-    "<com.example.App: com.example.Animal selectAnimal()>";
-    "<com.example.Cat: void saySomething()>";
-    "<com.example.App: void main(java.lang.String[])>";
     "<com.example.Cat: void <init>()>";
-    "<java.lang.System: void <clinit>()>";
+    "<com.example.Animal: void saySomething()>";
     "<com.example.App: void <init>()>";
+    "<com.example.App: com.example.Animal selectAnimal()>";
     "<com.example.Fish: void saySomething()>";
+    "<com.example.Cat: void saySomething()>";
     "<com.example.Animal: void <init>()>";
     "<com.example.App: com.example.Animal neverCalled()>";
+    "<com.example.App: void main(java.lang.String[])>";
     "<com.example.Fish: void <init>()>";
-    "<com.example.App: com.example.Animal selectAnimal()>"->"<java.lang.Object: void <clinit>()>";
     "<com.example.App: com.example.Animal selectAnimal()>"->"<com.example.Cat: void <init>()>";
-    "<com.example.App: void main(java.lang.String[])>"->"<java.lang.Object: void <clinit>()>";
     "<com.example.App: void main(java.lang.String[])>"->"<com.example.Cat: void saySomething()>";
     "<com.example.App: void main(java.lang.String[])>"->"<com.example.App: com.example.Animal selectAnimal()>";
-    "<com.example.Animal: void <init>()>"->"<java.lang.Object: void <init>()>";
     "<com.example.Cat: void <init>()>"->"<com.example.Animal: void <init>()>";
-    "<com.example.Cat: void saySomething()>"->"<java.lang.System: void <clinit>()>";
-    "<com.example.Cat: void saySomething()>"->"<java.lang.Object: void <clinit>()>";
 }
